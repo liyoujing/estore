@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements ICustomerService {
 			if(dbCustomer.getPassword().equals(password)){
 				customer = dbCustomer;
 			}else{
-				throw new ServiceException("用户名为空");
+				throw new ServiceException("密码错误");
 			}
 		}else{
 			throw new ServiceException("用户名不存在");

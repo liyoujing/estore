@@ -55,6 +55,29 @@ public class CustomerDao {
 	 * @param id
 	 */
 	public void deleteById(long id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			try{
+				//1.2 鑾峰彇杩炴帴
+				conn = ConnectionFactory.getConn();
+				//3. 鍒涘缓pstmt瀵硅薄
+				String sql = "delete * from customer where id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setLong(1,id);
+				//4. 鎵цsql
+				pstmt.executeUpdate();
+				
+			} finally {
+				//6閲婃斁璧勬簮
+				ConnectionFactory.close(null, pstmt, conn);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 
 	}
 

@@ -28,17 +28,17 @@ public class RegisterServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. å¤„ç†ç¼–ç 
+		// 1. ÉèÖÃ±àÂë
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		// 2. è·å–å‚æ•°
+		// 2.»ñÈ¡²ÎÊı
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		int age = Integer.parseInt(request.getParameter("age"));
 		Customer customer = new Customer(name, age, password);
-		// 3. è°ƒç”¨serviceå±‚ä»£ç å®Œæˆæ³¨å†Œ
+		// 3. µ÷ÓÃserviceÖĞµÄ·½·¨
 		customerService.register(customer);
-		// 4. é¡µé¢è·³è½¬
+		// 4. Ò³ÃæÌø×ª
 		request.getRequestDispatcher("/success.jsp").forward(request, response);
 	}
 

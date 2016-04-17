@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/com/briup/ch08/common/util/ConnectionFactory.java=UTF-8
 encoding//src/com/briup/ch08/dao/CustomerDao.java=UTF-8
+encoding//src/com/briup/ch08/dao/ProductDao.java=UTF-8
 encoding//src/com/briup/ch08/service/impl/CustomerServiceImpl.java=UTF-8
