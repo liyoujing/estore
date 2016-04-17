@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import com.briup.ch08.bean.Customer;
 import com.briup.ch08.common.util.ConnectionFactory;
 /**
- * 与数据库交互的类，不参与业务逻辑运算
+ * 涓庢暟鎹簱浜や簰鐨勭被锛屼笉鍙備笌涓氬姟閫昏緫杩愮畻
  * save
  * find/query
  * update
@@ -25,25 +25,25 @@ public class CustomerDao {
 	 * @param customer
 	 */
 	public void save(Customer customer) {
-		//6大步骤
+		//6澶ф楠�
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			try{
-				//1.2 获取连接
+				//1.2 鑾峰彇杩炴帴
 				conn = ConnectionFactory.getConn();
-				//3. 创建pstmt对象
-				String sql = "insert into rj12_customer(name,password,age) "
+				//3. 鍒涘缓pstmt瀵硅薄
+				String sql = "insert into customer(name,password,age) "
 						+ "values(?,?,?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, customer.getName());
 				pstmt.setString(2, customer.getPassword());
 				pstmt.setInt(3, customer.getAge());
-				//4. 执行sql
+				//4. 鎵цsql
 				pstmt.executeUpdate();
 				
 			} finally {
-				//6释放资源
+				//6閲婃斁璧勬簮
 				ConnectionFactory.close(null, pstmt, conn);
 			}
 		} catch (Exception e) {
@@ -64,19 +64,19 @@ public class CustomerDao {
 	 */
 	public Customer findByName(String name) {
 		Customer customer = null;
-		//6大步骤
+		//6澶ф楠�
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			try{
-				//1.2 获取连接
+				//1.2 鑾峰彇杩炴帴
 				conn = ConnectionFactory.getConn();
-				//3. 创建pstmt对象
-				String sql = "select * from rj12_customer where name = ?";
+				//3. 鍒涘缓pstmt瀵硅薄
+				String sql = "select * from customer where name = ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, name);
-				//4. 执行sql
+				//4. 鎵цsql
 				rs = pstmt.executeQuery();
 				while(rs.next()){
 					long id = rs.getLong("id");
@@ -86,7 +86,7 @@ public class CustomerDao {
 					customer.setId(id);
 				}
 			} finally {
-				//6释放资源
+				//6閲婃斁璧勬簮
 				ConnectionFactory.close(rs, pstmt, conn);
 			}
 		} catch (Exception e) {

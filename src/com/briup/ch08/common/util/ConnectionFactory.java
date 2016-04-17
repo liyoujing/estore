@@ -15,18 +15,18 @@ public class ConnectionFactory {
 	static {
 		driver = "com.mysql.jdbc.Driver";
 		//jdbc:mysql://ip:port/dbName
-		url="jdbc:mysql://127.0.0.1:3306/wy";
+		url="jdbc:mysql://127.0.0.1:3307/liyoujing";
 		user = "root";
-		password = "root";
+		password = "730429";
 		
 	}
 	/**
-	 * 静态方法
+	 * 闈欐�佹柟娉�
 	 * */
 	public static Connection getConn() throws Exception{
-		//加载驱动
+		//鍔犺浇椹卞姩
 		Class.forName(driver);
-		//获取连接
+		//鑾峰彇杩炴帴
 		return DriverManager.getConnection(url, user, password);
 		
 	}
